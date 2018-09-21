@@ -28,7 +28,7 @@ public class StudentManagement {
                         System.out.println(students[j].getInfo());
 //                        System.out.println("\n");
                     }
-                System.out.println("\n");
+                System.out.println("");
             }
 
         }

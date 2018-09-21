@@ -39,8 +39,8 @@ class Dog {
     }
 
     //phương thức eat
-    public static void eat(Dog dog , String food) {
-        System.out.println(dog.getName() +" ăn " + food);
+    public void eat( String food) {
+        System.out.println(this.name +" ăn " + food);
 
     }
 
@@ -104,7 +104,7 @@ class Teacher{
     }
 
     //phương thức cho điểm học sinh
-    public static void diem(Teacher teacher, double diem){
+    public void diem( double diem){
         if(diem > 8) System.out.println("Thầy đẹp trai");
         else System.out.println("Thầy hết đẹp trai rồi");
     }
@@ -160,7 +160,7 @@ class Player{
     }
 
     //phương thức đo thời gian chơi
-    public static void sogio(Player player, int hours){
+    public void sogio( int hours){
         if(hours>16) System.out.println("Thằng này nghiện game");
         else System.out.println("Thằng này bình thường");
     }

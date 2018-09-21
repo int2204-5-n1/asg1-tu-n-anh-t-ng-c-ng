@@ -31,44 +31,20 @@ public class Fraction {
 
     // hàm tối giản phân số và đổi dấu
     public static void toigian(Fraction n) {
-        if(n.numerator==0) return;
+        if(n.denominator==0) return;
         int a = n.numerator;
         int b = n.denominator;
-        if(a > 0 && b > 0) {
-            int tmp;
-            while (b != 0) {
-                tmp = a % b;
-                a = b;
-                b = tmp;
-            }
-            n.denominator /= a;
-            n.numerator /= a;
+        int tmp;
+        while(b!=0){
+            tmp = a%b;
+            a = b;
+            b = tmp;
         }
-        else if(a < 0 && b < 0) {
-            a *= -1;
-            b *= -1;
-            int tmp;
-            while (b != 0) {
-                tmp = a % b;
-                a = b;
-                b = tmp;
-            }
-            a *= -1;
-            n.denominator /= a;
-            n.numerator /= a;
-        }
-        else{
-            if(a < 0) a *= -1;
-            if(b < 0) b *= -1;
-            int tmp;
-            while (b != 0) {
-                tmp = a % b;
-                a = b;
-                b = tmp;
-            }
-            n.denominator /= a;
-            n.numerator /= a;
+        n.denominator /= a;
+        n.numerator /= a;
+        if(n.numerator > 0 && n.denominator < 0) {
             n.numerator *= -1;
+            n.denominator *= -1;
         }
     }
 
