@@ -6,9 +6,9 @@ public class Task3 {
 //TODO: khai báo 3 class tương ứng với 3 đối tượng thực tế ở dưới
 
 class Dog {
-    String name;
-    String sex;
-    double wieght;
+    private String name;
+    private String sex;
+    private double wieght;
 
     public Dog(String name, String sex, float wieght) {
         this.name = name;
@@ -58,9 +58,9 @@ class Dog {
 }
 
 class Teacher{
-    String name;
-    String sex;
-    int age;
+    private String name;
+    private String sex;
+    private int age;
 
     public Teacher(String name, String sex, int age) {
         this.name = name;
@@ -111,9 +111,9 @@ class Teacher{
 }
 
 class Player{
-    String id;
-    int level;
-    int gold;
+    private String id;
+    private int level;
+    private int gold;
 
     public Player(String id, int level, int gold) {
         this.id = id;
