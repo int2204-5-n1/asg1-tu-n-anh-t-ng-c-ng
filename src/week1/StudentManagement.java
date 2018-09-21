@@ -75,8 +75,9 @@ public class StudentManagement {
         System.out.println("---------------------------------------");
 
         System.out.print("Test remove ");
-        sm.removeStudent("16022222");
-        System.out.println("id 16022222: ");
+        String id_move = "16022222";
+        sm.removeStudent(id_move);
+        System.out.println("id " + id_move + ": ");
         for (int i = 0 ; i < sm.dem; i ++){
             System.out.println(sm.students[i].getInfo());
 
