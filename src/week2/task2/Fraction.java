@@ -1,5 +1,7 @@
 package week2.task2;
 
+import java.util.*;
+
 
 public class Fraction {
 
@@ -90,12 +92,20 @@ public class Fraction {
     }
 
     // So sanh hai phan so co bang nhau hay khong
-    public boolean equals(Fraction other){
-        Fraction n = new Fraction(this.numerator, this.denominator);
-        toigian(n);
-        toigian(other);
-        if(n.numerator == other.numerator && n.denominator == other.denominator)
-            return true;
-        else return false;
+    public boolean equals(Object obj){
+        if (obj instanceof Fraction)
+        {
+            Fraction other = (Fraction) obj;
+            if (this.numerator * other.denominator == other.numerator * this.denominator)
+            {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        else{
+            return false;
+        }
     }
 }
