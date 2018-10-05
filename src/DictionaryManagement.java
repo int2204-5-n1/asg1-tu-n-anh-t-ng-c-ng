@@ -9,20 +9,21 @@ public class DictionaryManagement {
     public void insertFromCommandline() {
         Scanner scan = new Scanner(System.in);
         System.out.println("Số lượng từ vựng: ");
-        int n;                  //Số lượn từ vựng
+        int n;                  //Số lượng từ vựng
         n = scan.nextInt();
         scan.nextLine();        //Để bỏ qua lệnh enter sau khi nhập n
         /*
         chạy for từ 1->n để nhập Word
          */
         for (int i = 0; i < n; ++i) {
-            System.out.print("English: ");
+            System.out.println("English: ");
             String word = scan.nextLine();
-            System.out.print("Vietnamese: ");
+            System.out.println("Vietnamese: ");
             String explain = scan.nextLine();
             Word tmp = new Word(word, explain);
             dictionary_.word_.add(tmp);
         }
+        scan.close();
     }
 
     /*
@@ -46,13 +47,105 @@ public class DictionaryManagement {
                  */
                 Word temp = new Word(word[0], word[1]);
                 dictionary_.word_.add(temp);
+                scanFile.close();
             }
         } catch (Exception e) {
             System.out.println(e);
         }
+
     }
 
+    /*
+    Tìm kiếm nhị phân tìm kiếm từ khóa w
+     */
+
+    public int search(String w){
+        int dau = 0;
+        int cuoi = dictionary_.word_.size()-1;
+        int giua ;
+
+        while(dau<=cuoi){
+
+            giua = dau + (cuoi - dau)/2;
+
+            if(dictionary_.word_.get(giua).getWord_target().compareToIgnoreCase(w)==0) return giua;
+            else {
+                if(dictionary_.word_.get(giua).getWord_target().compareToIgnoreCase(w)<0){
+                    dau = giua + 1;
+                }
+                else if(dictionary_.word_.get(giua).getWord_target().compareToIgnoreCase(w)>0){
+                    cuoi = giua - 1;
+                }
+            }
+        }
+        return -1;
+    }
+
+    /*
+    Viết hàm sắp xếp và thay đổi dictionaryLookup thành tìm kiếm nhị phân (Làm sau)
+     */
     public void dictionaryLookup(){
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Tra cứu từ: ");
+        String word_find = scan.nextLine();
+
+        for(int i=0;i<dictionary_.word_.size();++i){
+            if(dictionary_.word_.get(i).getWord_target().equalsIgnoreCase(word_find)){
+                System.out.print("Nghĩa của từ: " + dictionary_.word_.get(i).getWord_explain() +"\n");
+                break;
+            }
+        }
+    }
+
+
+    /*
+    Hàm thêm từ
+     */
+    public void addWord(){
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Thêm từ: ");
+        String word = scan.nextLine();
+        System.out.println("Nghĩa của từ:");
+        String explain = scan.nextLine();
+        Word newWord = new Word(word,explain);
+        dictionary_.word_.add(newWord);
+    }
+
+    /*
+    Hàm xóa từ
+     */
+    public void removeWord(){
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Xóa từ:");
+        String w_r = scan.nextLine();
+        if (search(w_r)==-1) {
+            System.out.println("Không tồn tại từ này");
+            return;
+        }
+        int index = search(w_r);
+        dictionary_.word_.remove(index);
 
     }
+
+    /*
+    Hàm sửa từ
+     */
+    public void editWord(){
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Nhập từ cần sửa:");
+        String word_need_edit = scan.nextLine();
+        if (search(word_need_edit)==-1){
+            System.out.println("Không tồn tại từ này");
+            return;
+        }
+        int index = search(word_need_edit);
+        System.out.println("Sửa từ đó thành:");
+        String word_edit = scan.nextLine();
+        System.out.println("Nghĩa tiếng Việt:");
+        String explain = scan.nextLine();
+        Word tmp = new Word(word_edit,explain);
+        dictionary_.word_.add(tmp);
+    }
+
+
 }

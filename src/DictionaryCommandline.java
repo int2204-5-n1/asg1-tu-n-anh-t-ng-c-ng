@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class DictionaryCommandline {
 
     DictionaryManagement dic_manage_ = new DictionaryManagement();
@@ -19,4 +21,12 @@ public class DictionaryCommandline {
         dic_manage_ .insertFromFile();
         showAllWords();
     }
+
+    public void dictionaryAdvanced(){
+        dic_manage_.insertFromFile();
+        showAllWords();
+        dic_manage_.dictionaryLookup();
+    }
+
+    public void dictionarySearcher(){}
 }
