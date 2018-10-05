@@ -2,7 +2,11 @@ public class Word {
     private String word_target ;
     private String word_explain;
 
-    Word() {
+    Word(){}
+
+    Word(String word, String explain) {
+        this.word_target = word;
+        this.word_explain = explain;
     }
 
     //Hàm tạo và lấy từ mới
