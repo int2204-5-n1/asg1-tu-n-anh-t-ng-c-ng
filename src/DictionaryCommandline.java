@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+import java.util.Set;
 
 public class DictionaryCommandline {
 
@@ -10,15 +10,17 @@ public class DictionaryCommandline {
     public void showAllWords(){
         System.out.println("No\t| English\t| Vietnamese");
 
-        for(int i=0;i<dic_manage_.dictionary_.word_.size();++i){
-            System.out.println(i+1 + "\t| " + dic_manage_.dictionary_.word_.get(i).getWord_target() + "\t| " + dic_manage_.dictionary_.word_.get(i).getWord_explain());
-
+        Set<String> set = dic_manage_.dictionary_.word_.keySet();
+        int i = 1;
+        for (String key : set) {
+            System.out.println(i + "\t| " + key + "\t| " + dic_manage_.dictionary_.word_.get(key));
+            ++i;
         }
 
     }
 
     public void dictionaryBasic(){
-        dic_manage_ .insertFromFile();
+        dic_manage_.insertFromFile();
         showAllWords();
     }
 

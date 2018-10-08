@@ -1,8 +1,10 @@
 import java.io.File;
 import java.util.Scanner;
+import java.util.TreeMap;
 
 public class DictionaryManagement {
     public Dictionary dictionary_ = new Dictionary();
+
     /*
     Hàm thêm từ vào dictionary
      */
@@ -20,8 +22,8 @@ public class DictionaryManagement {
             String word = scan.nextLine();
             System.out.println("Vietnamese: ");
             String explain = scan.nextLine();
-            Word tmp = new Word(word, explain);
-            dictionary_.word_.add(tmp);
+            //Word tmp = new Word(word, explain);
+            dictionary_.word_.put(word,explain);
         }
         scan.close();
     }
@@ -46,19 +48,23 @@ public class DictionaryManagement {
                 va word[1] = vietnamese
                  */
                 Word temp = new Word(word[0], word[1]);
-                dictionary_.word_.add(temp);
-                scanFile.close();
+                //dictionary_.word_.put(word[0],word[1]);
+                dictionary_.word_list.add(temp);
             }
         } catch (Exception e) {
             System.out.println(e);
         }
+        for(int i=0;i<dictionary_.word_list.size();++i){
+            dictionary_.word_.put(dictionary_.word_list.get(i).getWord_target(),dictionary_.word_list.get(i).getWord_explain());
+        }
+        sortDictionary();       // Hàm sắp xếp map Word
 
     }
 
     /*
     Tìm kiếm nhị phân tìm kiếm từ khóa w
      */
-
+    /*
     public int search(String w){
         int dau = 0;
         int cuoi = dictionary_.word_.size()-1;
@@ -80,21 +86,19 @@ public class DictionaryManagement {
         }
         return -1;
     }
+    */
 
     /*
     Viết hàm sắp xếp và thay đổi dictionaryLookup thành tìm kiếm nhị phân (Làm sau)
+    (Đã sửa bên dưới)
      */
     public void dictionaryLookup(){
         Scanner scan = new Scanner(System.in);
         System.out.println("Tra cứu từ: ");
         String word_find = scan.nextLine();
+        System.out.println(dictionary_.word_.get(word_find));
 
-        for(int i=0;i<dictionary_.word_.size();++i){
-            if(dictionary_.word_.get(i).getWord_target().equalsIgnoreCase(word_find)){
-                System.out.print("Nghĩa của từ: " + dictionary_.word_.get(i).getWord_explain() +"\n");
-                break;
-            }
-        }
+
     }
 
 
@@ -107,8 +111,8 @@ public class DictionaryManagement {
         String word = scan.nextLine();
         System.out.println("Nghĩa của từ:");
         String explain = scan.nextLine();
-        Word newWord = new Word(word,explain);
-        dictionary_.word_.add(newWord);
+        //Word newWord = new Word(word,explain);
+        dictionary_.word_.put(word,explain);
     }
 
     /*
@@ -118,12 +122,7 @@ public class DictionaryManagement {
         Scanner scan = new Scanner(System.in);
         System.out.println("Xóa từ:");
         String w_r = scan.nextLine();
-        if (search(w_r)==-1) {
-            System.out.println("Không tồn tại từ này");
-            return;
-        }
-        int index = search(w_r);
-        dictionary_.word_.remove(index);
+        dictionary_.word_.remove(w_r);
 
     }
 
@@ -134,18 +133,20 @@ public class DictionaryManagement {
         Scanner scan = new Scanner(System.in);
         System.out.println("Nhập từ cần sửa:");
         String word_need_edit = scan.nextLine();
-        if (search(word_need_edit)==-1){
+        if (dictionary_.word_.containsKey(word_need_edit)){
             System.out.println("Không tồn tại từ này");
             return;
         }
-        int index = search(word_need_edit);
-        System.out.println("Sửa từ đó thành:");
-        String word_edit = scan.nextLine();
-        System.out.println("Nghĩa tiếng Việt:");
-        String explain = scan.nextLine();
-        Word tmp = new Word(word_edit,explain);
-        dictionary_.word_.add(tmp);
+        System.out.println("Nhập nghĩa của từ: ");
+        String new_explain = scan.nextLine();
+        dictionary_.word_.replace(word_need_edit,new_explain);
     }
 
+    /*
+    Hàm sắp xếp mảng Word
+     */
+    public void sortDictionary(){
+        dictionary_.word_ = new TreeMap<>(dictionary_.word_);
+    }
 
 }
