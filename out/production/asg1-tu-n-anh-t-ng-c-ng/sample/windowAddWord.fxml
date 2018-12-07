@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="530.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerAddWord">
+   <children>
+      <TextField fx:id="newWord" layoutX="147.0" layoutY="39.0" prefHeight="27.0" prefWidth="207.0" />
+      <Text layoutX="30.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Từ cần thêm" textAlignment="CENTER" wrappingWidth="94.13671875">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Label alignment="CENTER" layoutX="182.0" layoutY="135.0" prefHeight="42.0" prefWidth="137.0" text="Nội dung từ" textAlignment="CENTER">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="textFieldNoun" layoutX="147.0" layoutY="207.0" prefHeight="27.0" prefWidth="207.0" />
+      <TextField fx:id="textFieldAdjective" layoutX="147.0" layoutY="278.0" prefHeight="27.0" prefWidth="207.0" />
+      <TextField fx:id="textFieldVerb" layoutX="147.0" layoutY="351.0" prefHeight="27.0" prefWidth="207.0" />
+      <TextField fx:id="textFieldAdverb" layoutX="147.0" layoutY="424.0" prefHeight="27.0" prefWidth="207.0" />
+      <CheckBox fx:id="checkBoxNoun" alignment="CENTER" layoutX="30.0" layoutY="207.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="94.0" text="Danh từ">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </CheckBox>
+      <CheckBox fx:id="checkBoxAdjective" alignment="CENTER" layoutX="30.0" layoutY="282.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="94.0" text="Tính từ">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </CheckBox>
+      <CheckBox fx:id="checkBoxVerb" alignment="CENTER" layoutX="30.0" layoutY="355.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="94.0" text="Động từ">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </CheckBox>
+      <CheckBox fx:id="checkBoxAdverb" alignment="CENTER" layoutX="30.0" layoutY="429.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="94.0" text="Trạng từ">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </CheckBox>
+      <Label alignment="CENTER" layoutX="30.0" layoutY="113.0" prefHeight="19.0" prefWidth="94.0" text="Phát âm">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="textFieldPronounce" layoutX="147.0" layoutY="109.0" prefHeight="27.0" prefWidth="207.0" />
+      <Button fx:id="buttonOK" layoutX="354.0" layoutY="461.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="67.0" text="OK" />
+      <Button fx:id="buttonCancel" layoutX="441.0" layoutY="461.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="67.0" text="Cancel" />
+      <Label layoutX="20.0" layoutY="465.0" prefHeight="17.0" prefWidth="310.0" text="*Note: Sau khi thêm từ bấm &quot;Refresh&quot; để cập nhật từ điển" />
+   </children>
+</AnchorPane>
